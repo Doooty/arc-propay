@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────────
+   DARK MODE — default theme
+   ───────────────────────────────────────────────────────────────── */
+:root {
+  /* App chrome */
+  --bg:              #0B1120;
+  --bg-gradient:     linear-gradient(180deg, #0B1120 0%, #0d1528 100%);
+  --sidebar-bg:      #0F172A;
+  --sidebar-border:  #1E293B;
+
+  /* Surfaces */
+  --surface:         rgba(255, 255, 255, 0.04);
+  --surface-strong:  #1E293B;
+  --surface-muted:   rgba(255, 255, 255, 0.05);
+  --card-bg:         #1E293B;
+
+  /* Text */
+  --ink:             #F8FAFC;
+  --ink-2:           #CBD5E1;
+  --muted:           #94A3B8;
+  --subtle:          #64748B;
+
+  /* Borders */
+  --border:          #334155;
+  --border-strong:   #475569;
+
+  /* Accent */
+  --accent:          #3B82F6;
+  --accent-hover:    #60A5FA;
+  --focus:           #93C5FD;
+
+  /* Semantic */
+  --success:         #34D399;
+  --danger:          #F87171;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LIGHT MODE — applied when <html class="light">
+   ───────────────────────────────────────────────────────────────── */
+.light {
+  --bg:              #ffffff;
+  --bg-gradient:     linear-gradient(180deg, #f9f9fc 0%, #fffcf7 52%, #fbf7f2 100%);
+  --sidebar-bg:      #122d45;
+  --sidebar-border:  rgba(255,255,255,0.10);
+
+  --surface:         rgba(255, 255, 255, 0.72);
+  --surface-strong:  rgba(255, 255, 255, 0.90);
+  --surface-muted:   #f5f5f8;
+  --card-bg:         #ffffff;
+
+  --ink:             #122d45;
+  --ink-2:           #334155;
+  --muted:           #6b6580;
+  --subtle:          #8a849c;
+
+  --border:          rgba(18, 45, 69, 0.12);
+  --border-strong:   rgba(25, 53, 77, 0.50);
+
+  --accent:          #122d45;
+  --accent-hover:    #1061a6;
+  --focus:           #85b1ed;
+
+  --success:         #1a8047;
+  --danger:          #ba2b4c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100dvh;
+  background: var(--bg-gradient);
+  color: var(--ink);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.display {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', Menlo, monospace;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   CARD POLISH
+   ───────────────────────────────────────────────────────────────── */
+
+/* Consistent 16px radius on all cards */
+.card {
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Subtle lift on interactive cards (dark) */
+:root .card-hover:hover {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   CONNECTKIT — accent the button when disconnected
+   ───────────────────────────────────────────────────────────────── */
+[data-testid="connect-button"],
+.ck-button {
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+
+/* Override ConnectKit's button colors to use our accent */
+.ck-connectbutton {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+
+.ck-connectbutton:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+/* ─────────────────────────────────────────────────────────────────
+   FOCUS RING
+   ───────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
